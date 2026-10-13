@@ -1,0 +1,22 @@
+push_to_prod.sh
+.env
+
+/node_modules
+.idea
+.vscode
+/.pnp
+.pnpm-store
+/build
+.next
+next-env.d.ts
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# typescript
+*.tsbuildinfo

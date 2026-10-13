@@ -1,0 +1,27 @@
+# Core
+fastapi==0.143.0
+sqlmodel==0.0.48
+sqlalchemy[asyncio]==2.1.4
+psycopg[binary,pool]==3.3.6
+
+# Pydantic
+pydantic==2.14.0
+pydantic-settings==2.15.0
+
+# Auth
+python-jose==3.5.0
+cryptography==50.0.2
+itsdangerous==2.2.0
+
+# General
+user-agents==2.2.0
+geoip2==5.3.0
+regex==2026.9.29
+httpx==0.28.1
+
+# Server
+uvicorn[standard]==0.54.0
+gunicorn==26.2.0
+
+# Dev/utility
+#Faker==40.5.1

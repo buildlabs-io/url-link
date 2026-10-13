@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-assistant), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-code), ui-monospace, "SFMono-Regular", monospace;
+
+  --color-bg: #fffffa;
+  --color-text: #0f1f1e;
+  --color-text-strong: #000000;
+  --color-accent: #4338ca;
+  --color-accent-secondary: #06b6d4;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+
+  --animate-shimmer: shimmer 1.4s ease infinite;
+  --animate-indeterminate: indeterminate 1.1s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -40%;
+    width: 40%;
+  }
+  50% {
+    left: 30%;
+    width: 55%;
+  }
+  100% {
+    left: 100%;
+    width: 40%;
+  }
+}
+
+:root {
+  --font-scale-factor: 1;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: calc(16px * var(--font-scale-factor));
+  background-color: var(--color-bg);
+}
+
+body {
+  font-family: inherit;
+  font-size: calc(1em * var(--font-scale-factor));
+  overflow-x: hidden;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+::selection {
+  background-color: teal;
+  color: white;
+}
+
+[dir="rtl"] body {
+  text-align: right;
+}
+[dir="ltr"] body {
+  text-align: left;
+}
+
+body.panel .hide-in-panel {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* AG Grid: match the brand palette instead of the stock quartz theme */
+.ag-theme-quartz {
+  --ag-font-family: var(--font-sans);
+  --ag-foreground-color: var(--color-text);
+  --ag-background-color: var(--color-bg);
+  --ag-header-foreground-color: var(--color-text);
+  --ag-header-background-color: color-mix(
+    in srgb,
+    var(--color-accent) 6%,
+    white
+  );
+  --ag-border-color: #e2e8f0;
+  --ag-row-hover-color: color-mix(in srgb, var(--color-accent) 5%, white);
+  --ag-selected-row-background-color: color-mix(
+    in srgb,
+    var(--color-accent) 10%,
+    white
+  );
+  --ag-accent-color: var(--color-accent);
+  --ag-checkbox-checked-color: var(--color-accent);
+}
+
+/* ----------------------- Accessibility bar overrides ---------------------- */
+
+html.readable-font,
+html.readable-font body,
+html.readable-font input,
+html.readable-font textarea,
+html.readable-font button,
+html.readable-font select,
+html.readable-font label,
+html.readable-font span,
+html.readable-font p,
+html.readable-font div,
+html.readable-font a {
+  font-family:
+    "Arial Rounded MT Bold", "Tahoma", "Verdana", "system-ui", sans-serif !important;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+}
+
+/* Underline mode */
+html.underline-links a,
+html.underline-links a *,
+html.underline-links button {
+  text-decoration: underline !important;
+}
+
+/* High contrast mode */
+html.high-contrast {
+  --category-hover-bg: #333 !important;
+  --category-active-bg: #444 !important;
+  --color-bg: black !important;
+  --color-text-strong: yellow !important;
+  --a11y-outline: yellow !important;
+}
+
+html.high-contrast,
+body.high-contrast,
+html.high-contrast body,
+html.high-contrast #font-scale-wrapper,
+html.high-contrast main {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text-strong) !important;
+}
+
+html.high-contrast * {
+  color: var(--color-text-strong) !important;
+  border-color: var(--a11y-outline) !important;
+  caret-color: var(--color-text-strong) !important;
+}
+
+/* Elements that paint their own surface need an explicit flip since they sit
+   above the broad body/main override above. */
+html.high-contrast .surface {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text-strong) !important;
+}
+
+html.high-contrast button {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text-strong) !important;
+  border-color: var(--a11y-outline) !important;
+}
+
+html.high-contrast input,
+html.high-contrast textarea {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text-strong) !important;
+  border: 1px solid var(--a11y-outline) !important;
+}
+
+html.high-contrast svg {
+  color: var(--color-text-strong) !important;
+}
+
+html.high-contrast img {
+  border: 2px solid var(--a11y-outline) !important;
+  border-radius: 4px;
+}
+
+html.high-contrast label {
+  color: var(--color-text-strong) !important;
+}
+
+html.invert {
+  filter: invert(100%);
+}
+
+html.grayscale {
+  filter: grayscale(100%);
+}
+
+/* Font scaling */
+html.font-size-80 {
+  --font-scale-factor: 0.8;
+}
+html.font-size-90 {
+  --font-scale-factor: 0.9;
+}
+html.font-size-100 {
+  --font-scale-factor: 1;
+}
+html.font-size-110 {
+  --font-scale-factor: 1.1;
+}
+html.font-size-120 {
+  --font-scale-factor: 1.2;
+}
+html.font-size-130 {
+  --font-scale-factor: 1.3;
+}
+html.font-size-140 {
+  --font-scale-factor: 1.4;
+}
+html.font-size-150 {
+  --font-scale-factor: 1.5;
+}
+html.font-size-160 {
+  --font-scale-factor: 1.6;
+}
+html.font-size-170 {
+  --font-scale-factor: 1.7;
+}
+html.font-size-180 {
+  --font-scale-factor: 1.8;
+}
+html.font-size-190 {
+  --font-scale-factor: 1.9;
+}
+html.font-size-200 {
+  --font-scale-factor: 2;
+}
