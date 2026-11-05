@@ -73,7 +73,7 @@ export default function LoginButtons() {
           {t("login.google")}
 
           <img
-            src="https://developers.google.com/identity/images/g-logo.png"
+            src="/google-logo.webp"
             alt="Google"
             className="size-5"
           />
